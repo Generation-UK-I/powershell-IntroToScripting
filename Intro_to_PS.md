@@ -430,7 +430,7 @@ if(Test-Path -Path $filePath){
 }
 ```
 
-Here's an example using `elseif` to add more outputs. Note: in this example my text file contains pizza orders, update yours for whatever scenario you're going to model.
+Here's an example using `elseif` to add more outputs. Note: in this example my text file contains pizza orders.
 
 ```powershell
 $Data = Get-Content -Path $filePath
@@ -447,9 +447,44 @@ if($pizzaOrder -eq 'Pepperoni'){
 }
 ```
 
+Try creating your own if/elseif/else statement from scratch, with a different scenario from these examples.
+
 ## Foreach
 
-## Custom Objects with Pipes Example - Solution
+I've dropped a few examples of `foreach` in previous sections, in a nutshell, it's the PowerShell equivalent of a `for loop`.
+
+The first example uses a `foreach` loop to iterate through each item in the list, and print each fruit to the console.
+
+```powershell
+$fruits = @("Apple", "Banana", "Cherry", "Date", "Elderberry")
+
+foreach ($fruit in $fruits) {
+    Write-Output "Fruit: $fruit"
+}
+```
+What do you think is happening here?
+
+```powershell
+$files = Get-ChildItem -Path "G:\downloads\generation\courses\PS\records\" -Filter "*.txt"
+
+foreach ($file in $files) {
+    Write-Output "Processing file: $($file.Name)"
+}
+```
+
+- `Get-ChildItem` is run against the directory specified by `-Path`, and the returned objects are stored in the variable `$files`
+- The `foreach` loop, just like in Python, uses another variable `$file` to hold each individual object on each iteration of the loop.
+- In each loop the string "Processing file:" and the `Name` property of the object is called from `$file` and added to the string
+
+    ### Aliases
+
+    Similar to Bash, Python, and SQL, PowerShell supports aliases. Typing `dir` into command prompt lists the content of the current directory. PowerShell commands use a Verb-Noun format, `dir` doesn't fit the structure. The equivalent command in PowerShell is `Get-ChildItem`, but `dir` is aliased to `Get-ChildItem`, so typing `dir` will work.
+
+    View configured aliases with `Get-Alias`
+
+
+
+## Custom Objects with Pipes - Example Solution
 
 ```powershell
 $sausage1=New-Object -TypeName PSCustomObject
