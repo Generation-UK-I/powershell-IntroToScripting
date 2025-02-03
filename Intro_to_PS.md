@@ -405,7 +405,7 @@ Challenge: Use the above syntax to return a message about your custom object. Ex
 
 ## If Statements
 
-If statements follow the same logic that we've used in Python and Bash
+If statements follow the same logic that we've used in Python and Bash. For these examples I've created a text file, added some data to it, and provided the absolute path to the file in the `$filePath` variable. You could also use a relative path if the file is in the same directory as your PS script.
 
 ```powershell
 $filePath = "G:\downloads\generation\courses\PS\SomeData.txt"
@@ -416,8 +416,11 @@ if(Test-Path -Path $filePath){
 }else{
     Write-Output "File `"$filePath`" does not exist!"
 }
+```
 
+Let's do a little more processing in our output
 
+```powershell
 if(Test-Path -Path $filePath){
     $Data = Get-Content -Path $filePath
     $lineCount = $Data.Count
@@ -426,6 +429,25 @@ if(Test-Path -Path $filePath){
     Write-Output "File `"$filePath`" does not exist!"
 }
 ```
+
+Here's an example using `elseif` to add more outputs. Note: in this example my text file contains pizza orders, update yours for whatever scenario you're going to model.
+
+```powershell
+$Data = Get-Content -Path $filePath
+$pizzaOrder = $Data[0]
+
+if($pizzaOrder -eq 'Pepperoni'){
+    Write-Output "$pizzaOrder is a classic"
+}elseif($pizzaOrder -eq 'Ham & Pineapple'){
+    Write-Output "$pizzaOrder, salty and sweet, nice"
+}elseif($pizzaOrder -eq 'Quattro Formagio'){
+    Write-Output "$pizzaOrder, can't have enough cheese!"
+}else{
+    Write-Output "You get the idea, $pizzaOrder embedded in a msg"
+}
+```
+
+## Foreach
 
 ## Custom Objects with Pipes Example - Solution
 
@@ -452,4 +474,3 @@ $sosigList=New-Object -TypeName System.Collections.ArrayList
 $sosigList.AddRange(@($sausage1,$sausage2))
 
 $sosigList | Foreach-Object{Write-Output "This $($_.Breed) is called $($_.Name) and $($_.pronoun) is $($_.Age) years old"}
-```
