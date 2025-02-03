@@ -427,7 +427,7 @@ if(Test-Path -Path $filePath){
 }
 ```
 
-
+## Custom Objects with Pipes Example - Solution
 
 ```powershell
 $sausage1=New-Object -TypeName PSCustomObject
