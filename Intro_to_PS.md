@@ -482,7 +482,7 @@ foreach ($file in $files) {
 
     View configured aliases with `Get-Alias`
 
-
+**Challenge:** Combine your knowledge from previous sections to write a `foreach` loop containing an `if` statement - Example solution at the end.
 
 ## Custom Objects with Pipes - Example Solution
 
@@ -509,3 +509,24 @@ $sosigList=New-Object -TypeName System.Collections.ArrayList
 $sosigList.AddRange(@($sausage1,$sausage2))
 
 $sosigList | Foreach-Object{Write-Output "This $($_.Breed) is called $($_.Name) and $($_.pronoun) is $($_.Age) years old"}
+```
+
+## `if` Statement in a `foreach` loop - Example Solution
+
+```powershell
+$filePath = "G:\downloads\generation\courses\PS\SomeData.txt"
+$pizzas = Get-Content -Path $filePath
+# $pizzas
+
+foreach($pizza in $pizzas){
+    if($pizza -eq 'Pepperoni'){
+        Write-Output "$pizza is a classic"
+    }elseif($pizza -eq 'Ham & Pineapple'){
+        Write-Output "$pizza, salty and sweet, nice"
+    }elseif($pizza -eq 'Quattro Formagio'){
+        Write-Output "$pizza, can't have enough cheese!"
+    }else{
+        Write-Output "You get the idea, $pizza embedded in a msg"
+    }
+}
+```
