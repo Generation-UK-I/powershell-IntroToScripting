@@ -405,12 +405,23 @@ Challenge: Use the above syntax to return a message about your custom object. Ex
 
 ## If Statements
 
+If statements follow the same logic that we've used in Python and Bash
+
 ```powershell
 $filePath = "G:\downloads\generation\courses\PS\SomeData.txt"
 
 if(Test-Path -Path $filePath){
     $Data = Get-Content -Path $filePath
     # $Data.Count
+}else{
+    Write-Output "File `"$filePath`" does not exist!"
+}
+
+
+if(Test-Path -Path $filePath){
+    $Data = Get-Content -Path $filePath
+    $lineCount = $Data.Count
+    Write-Output "There are $lineCount lines in the file"
 }else{
     Write-Output "File `"$filePath`" does not exist!"
 }
