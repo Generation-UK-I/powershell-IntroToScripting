@@ -511,7 +511,7 @@ In this example the items in the array are modified
 ```powershell
 $petNames = @('Frankie','Scout','Noche','Weasley')
 
-for($i=0;$i -lt $petNames.Length; $i++){
+for($i = 0; $i -lt $petNames.Length; $i++){
     $petNames[$i]+=' is sleepy'
 }
 
@@ -578,7 +578,6 @@ $sosigList | Foreach-Object{Write-Output "This $($_.Breed) is called $($_.Name) 
 ```powershell
 $filePath = "G:\downloads\generation\courses\PS\SomeData.txt"
 $pizzas = Get-Content -Path $filePath
-# $pizzas
 
 foreach($pizza in $pizzas){
     if($pizza -eq 'Pepperoni'){
