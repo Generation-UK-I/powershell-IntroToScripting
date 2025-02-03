@@ -484,6 +484,68 @@ foreach ($file in $files) {
 
 **Challenge:** Combine your knowledge from previous sections to write a `foreach` loop containing an `if` statement - Example solution at the end.
 
+## For Loops
+
+The `for` loop is very similar to `foreach`, except that it is used when you want to loop a set number of times, or use a counter.
+
+```powershell
+for ($i = 1; $i -le 50; $i++) {
+    Write-Output "Iteration $i"
+}
+```
+
+For can also loop through an array by accessing items via the index number
+
+```powershell
+$petNames = @('Frankie','Scout','Noche','Weasley')
+
+for ($i = 0; $i -le $petNames.Length; $i++) {
+    Write-Output $petNames[$i]
+}
+```
+
+There is one important difference between `for` and `foreach`, which is that `for` loops can modify the items in an array.
+
+In this example the items in the array are modified
+
+```powershell
+$petNames = @('Frankie','Scout','Noche','Weasley')
+
+for($i=0;$i -lt $petNames.Length; $i++){
+    $petNames[$i]+=' is sleepy'
+}
+
+$petNames
+```
+
+However, in this example using `foreach`, the original array items are not modified.
+
+```powershell
+$petNames = @('Frankie','Scout','Noche','Weasley')
+
+foreach($pet in $petNames){
+    $pet+=' is hungry'
+    Write-Output $pet
+}
+
+$petNames
+```
+
+Use `for` and `foreach` accordingly based on your needs, if the integrity of the array items needs to be maintained, use `foreach`.
+
+## While Loops
+
+The final loop we'll look at is the while loop, which again, just like in Python and Bash, simply loops until a condition is met, such as a counter, or a boolean flag. 
+
+```powershell
+$counter = 1
+
+while ($counter -le 5) {
+    Write-Output "Count: $counter"
+    $counter++
+}
+```
+
 ## Custom Objects with Pipes - Example Solution
 
 ```powershell
