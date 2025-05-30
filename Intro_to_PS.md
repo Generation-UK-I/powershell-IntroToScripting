@@ -8,6 +8,8 @@ As user requirements evolved, for example the need to minimise the O/S footprint
 
 At this point there are two current versions of PowerShell, PowerShell 5 is included with Windows distributions by default and was built upon the legacy .NET Framework, PowerShell 7 is built upon .NET Core, and can be installed alongside version 5. I wouldn't be surprised if at some point in the future they're consolidated.
 
+The following tutorial should work within PowerShell 5 or 7.
+
 ## Variables
 
 We use the `$` character to declare, recall, and work with variables.
